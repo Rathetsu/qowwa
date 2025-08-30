@@ -1,4 +1,4 @@
-package com.aidxbaitezzat.qowwa
+package com.ezzat.sphinxstrength
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.aidxbaitezzat.qowwa
+package com.ezzat.sphinxstrength
 
 import android.app.Application
 import android.content.res.Configuration

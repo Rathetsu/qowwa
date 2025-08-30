@@ -100,7 +100,7 @@ export default function LoginScreen() {
 
 							{/* App Title with gradient text */}
 							<Text className="text-cyan-400 text-5xl font-black text-center mb-3 tracking-wider">
-								QOWWA
+								Sphinx Strength
 							</Text>
 							<Text className="text-white/90 text-xl text-center mb-6 font-light tracking-wide">
 								Fitness Evolution

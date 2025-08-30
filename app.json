@@ -1,44 +1,44 @@
 {
-  "expo": {
-    "name": "qowwa",
-    "slug": "qowwa",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "qowwa",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.aidxbaitezzat.qowwa"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true,
-      "package": "com.aidxbaitezzat.qowwa"
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
-    }
-  }
+	"expo": {
+		"name": "Sphinx Strength",
+		"slug": "sphinx strength",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon.png",
+		"scheme": "sphinxstrength",
+		"userInterfaceStyle": "automatic",
+		"newArchEnabled": true,
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.ezzat.sphinxstrength"
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#ffffff"
+			},
+			"edgeToEdgeEnabled": true,
+			"package": "com.ezzat.sphinxstrength"
+		},
+		"web": {
+			"bundler": "metro",
+			"output": "static",
+			"favicon": "./assets/images/favicon.png"
+		},
+		"plugins": [
+			"expo-router",
+			[
+				"expo-splash-screen",
+				{
+					"image": "./assets/images/splash-icon.png",
+					"imageWidth": 200,
+					"resizeMode": "contain",
+					"backgroundColor": "#ffffff"
+				}
+			]
+		],
+		"experiments": {
+			"typedRoutes": true
+		}
+	}
 }

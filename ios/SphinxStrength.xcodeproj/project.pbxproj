@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0044C8993D50098606BC7EF9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 58CACE5DD33F642C25C51A91 /* PrivacyInfo.xcprivacy */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		2CE9789719D788500D58A3BF /* libPods-qowwa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3477491D0CA362D3907E96 /* libPods-qowwa.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C764EAEDF79F8F895D9087B8 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E43DD8153A355C3DF95E7F6 /* ExpoModulesProvider.swift */; };
+		D0F73B24E29DBDA14AF6F66A /* libPods-SphinxStrength.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F70350905867B01434452AC /* libPods-SphinxStrength.a */; };
+		D4B2264F907D7C8A4E4F8B84 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9A13833C80179369D4889B /* ExpoModulesProvider.swift */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		FED719A6238DD99DBBBDFD13 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 79C19E8EA982A118A6A21FE0 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		13B07F961A680F5B00A75B9A /* qowwa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qowwa.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = qowwa/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = qowwa/Info.plist; sourceTree = "<group>"; };
-		2C3477491D0CA362D3907E96 /* libPods-qowwa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qowwa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		58CACE5DD33F642C25C51A91 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = qowwa/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		9E43DD8153A355C3DF95E7F6 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-qowwa/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = qowwa/SplashScreen.storyboard; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* SphinxStrength.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SphinxStrength.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SphinxStrength/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SphinxStrength/Info.plist; sourceTree = "<group>"; };
+		2D9A13833C80179369D4889B /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-SphinxStrength/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		6F70350905867B01434452AC /* libPods-SphinxStrength.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SphinxStrength.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79C19E8EA982A118A6A21FE0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = SphinxStrength/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		9CB4FD55B7A0CA8AE3806D20 /* Pods-SphinxStrength.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SphinxStrength.release.xcconfig"; path = "Target Support Files/Pods-SphinxStrength/Pods-SphinxStrength.release.xcconfig"; sourceTree = "<group>"; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = SphinxStrength/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		C362EC1F2042BCD6162E65D9 /* Pods-qowwa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qowwa.debug.xcconfig"; path = "Target Support Files/Pods-qowwa/Pods-qowwa.debug.xcconfig"; sourceTree = "<group>"; };
-		C5981A5F3E383DDA68F208FB /* Pods-qowwa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qowwa.release.xcconfig"; path = "Target Support Files/Pods-qowwa/Pods-qowwa.release.xcconfig"; sourceTree = "<group>"; };
+		C02D2EFC467F0E80D0BB9806 /* Pods-SphinxStrength.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SphinxStrength.debug.xcconfig"; path = "Target Support Files/Pods-SphinxStrength/Pods-SphinxStrength.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = qowwa/AppDelegate.swift; sourceTree = "<group>"; };
-		F11748442D0722820044C1D9 /* qowwa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "qowwa-Bridging-Header.h"; path = "qowwa/qowwa-Bridging-Header.h"; sourceTree = "<group>"; };
+		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SphinxStrength/AppDelegate.swift; sourceTree = "<group>"; };
+		F11748442D0722820044C1D9 /* SphinxStrength-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SphinxStrength-Bridging-Header.h"; path = "SphinxStrength/SphinxStrength-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,42 +37,52 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CE9789719D788500D58A3BF /* libPods-qowwa.a in Frameworks */,
+				D0F73B24E29DBDA14AF6F66A /* libPods-SphinxStrength.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* qowwa */ = {
+		13B07FAE1A68108700A75B9A /* SphinxStrength */ = {
 			isa = PBXGroup;
 			children = (
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
-				F11748442D0722820044C1D9 /* qowwa-Bridging-Header.h */,
+				F11748442D0722820044C1D9 /* SphinxStrength-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				58CACE5DD33F642C25C51A91 /* PrivacyInfo.xcprivacy */,
+				79C19E8EA982A118A6A21FE0 /* PrivacyInfo.xcprivacy */,
 			);
-			name = qowwa;
+			name = SphinxStrength;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				2C3477491D0CA362D3907E96 /* libPods-qowwa.a */,
+				6F70350905867B01434452AC /* libPods-SphinxStrength.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5E3869BE0C0D2392672B5C20 /* qowwa */ = {
+		6E519A54C629CED3BB0756BA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9E43DD8153A355C3DF95E7F6 /* ExpoModulesProvider.swift */,
+				C02D2EFC467F0E80D0BB9806 /* Pods-SphinxStrength.debug.xcconfig */,
+				9CB4FD55B7A0CA8AE3806D20 /* Pods-SphinxStrength.release.xcconfig */,
 			);
-			name = qowwa;
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7E234A48E55764537485ABBB /* SphinxStrength */ = {
+			isa = PBXGroup;
+			children = (
+				2D9A13833C80179369D4889B /* ExpoModulesProvider.swift */,
+			);
+			name = SphinxStrength;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -85,12 +95,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* qowwa */,
+				13B07FAE1A68108700A75B9A /* SphinxStrength */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				F1032EB5D4CC9FA80D8AFDE9 /* Pods */,
-				D7DFF9CDA8310DA85877BB96 /* ExpoModulesProviders */,
+				6E519A54C629CED3BB0756BA /* Pods */,
+				BE203405145E5559748C1503 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -100,7 +110,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* qowwa.app */,
+				13B07F961A680F5B00A75B9A /* SphinxStrength.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,50 +121,40 @@
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
-			path = qowwa/Supporting;
+			path = SphinxStrength/Supporting;
 			sourceTree = "<group>";
 		};
-		D7DFF9CDA8310DA85877BB96 /* ExpoModulesProviders */ = {
+		BE203405145E5559748C1503 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				5E3869BE0C0D2392672B5C20 /* qowwa */,
+				7E234A48E55764537485ABBB /* SphinxStrength */,
 			);
 			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
-		F1032EB5D4CC9FA80D8AFDE9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C362EC1F2042BCD6162E65D9 /* Pods-qowwa.debug.xcconfig */,
-				C5981A5F3E383DDA68F208FB /* Pods-qowwa.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* qowwa */ = {
+		13B07F861A680F5B00A75B9A /* SphinxStrength */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "qowwa" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SphinxStrength" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				11FB6B3ACA82020BE47400AE /* [Expo] Configure project */,
+				B0FDEBB878F20FCD485F3B12 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				A62D35D2BA9BB3F6573B5A99 /* [CP] Embed Pods Frameworks */,
+				8BD67F24C04E4D7941E96471 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = qowwa;
-			productName = qowwa;
-			productReference = 13B07F961A680F5B00A75B9A /* qowwa.app */;
+			name = SphinxStrength;
+			productName = SphinxStrength;
+			productReference = 13B07F961A680F5B00A75B9A /* SphinxStrength.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +170,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "qowwa" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SphinxStrength" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -183,7 +183,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* qowwa */,
+				13B07F861A680F5B00A75B9A /* SphinxStrength */,
 			);
 		};
 /* End PBXProject section */
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				0044C8993D50098606BC7EF9 /* PrivacyInfo.xcprivacy in Resources */,
+				FED719A6238DD99DBBBDFD13 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,31 +233,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-qowwa-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SphinxStrength-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		11FB6B3ACA82020BE47400AE /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-qowwa/expo-configure-project.sh\"\n";
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -265,7 +246,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-qowwa/Pods-qowwa-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SphinxStrength/Pods-SphinxStrength-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
@@ -292,16 +273,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qowwa/Pods-qowwa-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SphinxStrength/Pods-SphinxStrength-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A62D35D2BA9BB3F6573B5A99 /* [CP] Embed Pods Frameworks */ = {
+		8BD67F24C04E4D7941E96471 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-qowwa/Pods-qowwa-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SphinxStrength/Pods-SphinxStrength-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -310,8 +291,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-qowwa/Pods-qowwa-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SphinxStrength/Pods-SphinxStrength-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B0FDEBB878F20FCD485F3B12 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-SphinxStrength/expo-configure-project.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -321,7 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				C764EAEDF79F8F895D9087B8 /* ExpoModulesProvider.swift in Sources */,
+				D4B2264F907D7C8A4E4F8B84 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,18 +330,18 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C362EC1F2042BCD6162E65D9 /* Pods-qowwa.debug.xcconfig */;
+			baseConfigurationReference = C02D2EFC467F0E80D0BB9806 /* Pods-SphinxStrength.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = qowwa/qowwa.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SphinxStrength/SphinxStrength.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = qowwa/Info.plist;
+				INFOPLIST_FILE = SphinxStrength/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -354,9 +354,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aidxbaitezzat.qowwa;
-				PRODUCT_NAME = qowwa;
-				SWIFT_OBJC_BRIDGING_HEADER = "qowwa/qowwa-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ezzat.sphinxstrength;
+				PRODUCT_NAME = SphinxStrength;
+				SWIFT_OBJC_BRIDGING_HEADER = "SphinxStrength/SphinxStrength-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -366,13 +366,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5981A5F3E383DDA68F208FB /* Pods-qowwa.release.xcconfig */;
+			baseConfigurationReference = 9CB4FD55B7A0CA8AE3806D20 /* Pods-SphinxStrength.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = qowwa/qowwa.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SphinxStrength/SphinxStrength.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = qowwa/Info.plist;
+				INFOPLIST_FILE = SphinxStrength/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -385,9 +385,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aidxbaitezzat.qowwa;
-				PRODUCT_NAME = qowwa;
-				SWIFT_OBJC_BRIDGING_HEADER = "qowwa/qowwa-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ezzat.sphinxstrength;
+				PRODUCT_NAME = SphinxStrength;
+				SWIFT_OBJC_BRIDGING_HEADER = "SphinxStrength/SphinxStrength-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -521,7 +521,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "qowwa" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SphinxStrength" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -530,7 +530,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "qowwa" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SphinxStrength" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.aidxbaitezzat.qowwa'
+    namespace 'com.ezzat.sphinxstrength'
     defaultConfig {
-        applicationId 'com.aidxbaitezzat.qowwa'
+        applicationId 'com.ezzat.sphinxstrength'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
