@@ -7,11 +7,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CustomButton from "@/components/CustomButton";
 import DashboardCard from "@/components/DashboardCard";
+import { Colors } from "@/constants/Colors";
 import { RootState } from "@/store";
 import { logout } from "@/store/userSlice";
 
 export default function HomeScreen() {
-	const user = useSelector((state: RootState) => state.user.user);
+	const user = useSelector((state: RootState) => {
+		try {
+			return state?.user?.user ?? null;
+		} catch (error) {
+			console.warn("Redux state not available, defaulting to null user");
+			return null;
+		}
+	});
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const insets = useSafeAreaInsets();
@@ -34,41 +42,46 @@ export default function HomeScreen() {
 
 	return (
 		<LinearGradient
-			colors={["#0f172a", "#111827", "#000000"]}
-			start={[0, 0]}
-			end={[1, 1]}
+			colors={Colors.theme.gradientDarkPrimary} // Stunning black to dark grey
+			start={{ x: 0, y: 0 }}
+			end={{ x: 1, y: 1 }}
 			style={{ flex: 1, paddingTop: insets.top }}
 		>
-			{/* Animated background elements */}
+			{/* Enhanced animated background elements with gold accents */}
 			<View className="absolute inset-0">
-				<View className="absolute top-10 right-20 w-40 h-40 bg-cyan-500/5 rounded-full blur-2xl animate-float" />
-				<View className="absolute bottom-40 left-10 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl animate-pulse" />
+				<View className="absolute top-10 right-20 w-40 h-40 bg-gold-500/8 rounded-full blur-2xl animate-float" />
+				<View className="absolute bottom-40 left-10 w-32 h-32 bg-gold-400/5 rounded-full blur-2xl animate-pulse" />
+				<View className="absolute top-1/3 left-1/4 w-24 h-24 bg-gold-300/3 rounded-full blur-xl animate-bounce" />
 			</View>
 
 			<ScrollView
 				className="flex-1 px-6 pt-6"
 				showsVerticalScrollIndicator={false}
 			>
-				{/* Premium Header */}
+				{/* Enhanced Premium Header with golden accents */}
 				<View className="flex-row justify-between items-center mb-10 animate-fade-in-up">
 					<View className="flex-1">
-						<Text className="text-white text-3xl font-black mb-1">
+						<Text className="text-white text-3xl font-black mb-1 tracking-wide">
 							Welcome back,
 						</Text>
-						<Text className="text-cyan-400 text-2xl font-bold mb-2">
+						<Text className="text-gold-400 text-2xl font-bold mb-2">
 							{user?.username}! 💪
 						</Text>
-						<Text className="text-white/70 text-base font-medium">
-							Ready to dominate your workout?
+						<Text className="text-grey-300 text-base font-medium">
+							Ready to{" "}
+							<Text className="text-gold-300 font-semibold">dominate</Text> your
+							workout?
 						</Text>
+						{/* Subtle gold accent line */}
+						<View className="mt-3 h-1 w-16 bg-gold-500/60 rounded-full" />
 					</View>
 					<CustomButton
 						title="Logout"
 						onPress={handleLogout}
 						variant="outline"
 						size="small"
-						className="border-red-400/60 shadow-lg shadow-red-400/20"
-						textClassName="text-red-400 font-bold"
+						className="border-gold-500/60 shadow-lg shadow-gold-500/20"
+						textClassName="text-gold-400 font-bold"
 					/>
 				</View>
 
@@ -85,8 +98,7 @@ export default function HomeScreen() {
 						subtitle="Create and manage your workout routines"
 						icon="💪"
 						onPress={navigateToPlans}
-						gradient={["#06b6d4", "#3b82f6"]}
-						variant="default"
+						variant="gold"
 					/>
 
 					<DashboardCard
@@ -94,8 +106,7 @@ export default function HomeScreen() {
 						subtitle="Monitor your strength gains and goals"
 						icon="📊"
 						onPress={() => {}} // Placeholder
-						gradient={["#8b5cf6", "#ec4899"]}
-						variant="default"
+						variant="dark"
 					/>
 
 					<DashboardCard
@@ -103,8 +114,7 @@ export default function HomeScreen() {
 						subtitle="Track your macros and meal plans"
 						icon="🥗"
 						onPress={() => {}} // Placeholder
-						gradient={["#10b981", "#059669"]}
-						variant="default"
+						variant="premium"
 					/>
 				</View>
 
@@ -117,19 +127,19 @@ export default function HomeScreen() {
 						<Text className="text-white text-xl font-bold tracking-wide">
 							📈 Recent Progress
 						</Text>
-						<View className="bg-cyan-500/20 px-3 py-1 rounded-full">
-							<Text className="text-cyan-300 text-xs font-bold">
+						<View className="bg-gold-500/20 px-3 py-1 rounded-full border border-gold-500/30">
+							<Text className="text-gold-300 text-xs font-bold">
 								TRENDING UP
 							</Text>
 						</View>
 					</View>
 
-					<View className="bg-black/20 border border-white/10 rounded-3xl p-6 shadow-2xl overflow-hidden">
-						{/* Background gradient overlay */}
+					<View className="bg-black/30 border border-gold-500/20 rounded-3xl p-6 shadow-2xl overflow-hidden">
+						{/* Enhanced background gradient overlay with gold */}
 						<LinearGradient
-							colors={["rgba(6, 182, 212, 0.1)", "rgba(139, 92, 246, 0.1)"]}
-							start={[0, 0]}
-							end={[1, 1]}
+							colors={Colors.theme.gradientGoldSubtle}
+							start={{ x: 0, y: 0 }}
+							end={{ x: 1, y: 1 }}
 							style={{
 								position: "absolute",
 								top: 0,
@@ -151,14 +161,14 @@ export default function HomeScreen() {
 											{item.exercise}
 										</Text>
 										<View className="flex-row items-center">
-											<View className="w-2 h-2 bg-cyan-400 rounded-full mr-2" />
-											<Text className="text-white/60 text-sm">
+											<View className="w-2 h-2 bg-gold-400 rounded-full mr-2" />
+											<Text className="text-grey-400 text-sm">
 												Personal Record
 											</Text>
 										</View>
 									</View>
 									<View className="items-end">
-										<Text className="text-cyan-400 text-lg font-bold">
+										<Text className="text-gold-400 text-lg font-bold">
 											{item.weight} lbs
 										</Text>
 										<Text className="text-white/60 text-sm">

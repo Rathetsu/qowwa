@@ -1,14 +1,8 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { Dimensions, View } from "react-native";
-import Animated, {
-	runOnJS,
-	useAnimatedStyle,
-	useSharedValue,
-	withTiming,
-} from "react-native-reanimated";
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { Dimensions, FlatList, View } from "react-native";
+import Animated from "react-native-reanimated";
 
 import { CalendarProps } from "@/types/calendar";
-import { CALENDAR_ANIMATION_CONFIG } from "@/utils/animationConfig";
 import { getCachedThreeDaySpan } from "@/utils/calendarPerformance";
 import {
 	addDays,
@@ -17,14 +11,19 @@ import {
 	getThreeDaySpan,
 } from "@/utils/dateUtils";
 
-import CalendarGestureHandler from "./CalendarGestureHandler";
 import CalendarHeader from "./CalendarHeader";
+import DayCard from "./DayCard";
 import ExerciseList from "./ExerciseList";
-import OptimizedDayCard from "./OptimizedDayCard";
 
 const { width: screenWidth } = Dimensions.get("window");
 const CARD_CONTAINER_WIDTH = screenWidth - 32;
-const DAY_MS = 86400000;
+const CURRENT_INDEX = 5; // Index of the current span in the array (5 prev + current + 5 next)
+
+interface SpanData {
+	id: string;
+	centerDate: Date;
+	days: any[];
+}
 
 export default function Calendar({
 	onDateSelect,
@@ -34,45 +33,36 @@ export default function Calendar({
 	const [centerDate, setCenterDate] = useState(initialDate);
 	const [selectedDate, setSelectedDate] = useState(initialDate);
 	const [isNavigating, setIsNavigating] = useState(false);
+	const flatListRef = useRef<FlatList>(null);
 
-	// Animation values
-	const translateX = useSharedValue(0);
+	// Generate 11 spans: 5 previous + current + 5 next
+	const spans = useMemo(() => {
+		const spanArray: SpanData[] = [];
 
-	// Generate current and adjacent day spans for smooth transitions
-	const { currentSpan, nextSpan, prevSpan } = useMemo(() => {
-		const current = getCachedThreeDaySpan(
-			centerDate,
-			selectedDate,
-			workoutSchedule,
-			getThreeDaySpan
-		);
-		const nextCenter = addDays(centerDate, 3);
-		const prevCenter = addDays(centerDate, -3);
-		const next = getCachedThreeDaySpan(
-			nextCenter,
-			selectedDate,
-			workoutSchedule,
-			getThreeDaySpan
-		);
-		const prev = getCachedThreeDaySpan(
-			prevCenter,
-			selectedDate,
-			workoutSchedule,
-			getThreeDaySpan
-		);
+		for (let i = -5; i <= 5; i++) {
+			const spanCenterDate = addDays(centerDate, i * 3);
+			const spanDays = getCachedThreeDaySpan(
+				spanCenterDate,
+				selectedDate,
+				workoutSchedule,
+				getThreeDaySpan
+			);
 
-		return {
-			currentSpan: current,
-			nextSpan: next,
-			prevSpan: prev,
-		};
+			spanArray.push({
+				id: `span-${spanCenterDate.getTime()}`,
+				centerDate: spanCenterDate,
+				days: spanDays,
+			});
+		}
+
+		return spanArray;
 	}, [centerDate, selectedDate, workoutSchedule]);
 
-	// Get the selected day's workout (memoized for performance)
-	const selectedWorkout = useMemo(
-		() => currentSpan.find((day) => day.isSelected)?.workout || null,
-		[currentSpan]
-	);
+	// Get the selected day's workout from current span
+	const selectedWorkout = useMemo(() => {
+		const currentSpan = spans[CURRENT_INDEX];
+		return currentSpan?.days.find((day) => day.isSelected)?.workout || null;
+	}, [spans]);
 
 	// Handle date selection
 	const handleDateSelect = useCallback(
@@ -83,94 +73,103 @@ export default function Calendar({
 		[onDateSelect]
 	);
 
-	// Handle navigation completion
-	const handleNavigationComplete = useCallback((newCenterTs: number) => {
-		const newCenterDate = new Date(newCenterTs);
+	// Navigate to next span (left arrow / swipe left)
+	const handleNextWeek = useCallback(() => {
+		if (isNavigating) return;
+		setIsNavigating(true);
+
+		// Update center date to next span
+		const newCenterDate = addDays(centerDate, 3);
 		setCenterDate(newCenterDate);
 		setSelectedDate(newCenterDate);
-		translateX.value = 0; // reset after state update
-		setIsNavigating(false);
-	}, []);
+
+		// Scroll to maintain current position after data update
+		setTimeout(() => {
+			flatListRef.current?.scrollToIndex({
+				index: CURRENT_INDEX,
+				animated: true,
+			});
+			setIsNavigating(false);
+		}, 50);
+	}, [isNavigating, centerDate]);
+
+	// Navigate to previous span (right arrow / swipe right)
+	const handlePreviousWeek = useCallback(() => {
+		if (isNavigating) return;
+		setIsNavigating(true);
+
+		// Update center date to previous span
+		const newCenterDate = addDays(centerDate, -3);
+		setCenterDate(newCenterDate);
+		setSelectedDate(newCenterDate);
+
+		// Scroll to maintain current position after data update
+		setTimeout(() => {
+			flatListRef.current?.scrollToIndex({
+				index: CURRENT_INDEX,
+				animated: true,
+			});
+			setIsNavigating(false);
+		}, 50);
+	}, [isNavigating, centerDate]);
+
+	// Handle swipe gestures
+	const handleMomentumScrollEnd = useCallback(
+		(event: any) => {
+			if (isNavigating) return;
+
+			const contentOffsetX = event.nativeEvent.contentOffset.x;
+			const newIndex = Math.round(contentOffsetX / CARD_CONTAINER_WIDTH);
+
+			if (newIndex !== CURRENT_INDEX) {
+				const direction = newIndex > CURRENT_INDEX ? 1 : -1;
+				const newCenterDate = addDays(centerDate, direction * 3);
+
+				setIsNavigating(true);
+				setCenterDate(newCenterDate);
+				setSelectedDate(newCenterDate);
+
+				// Reset to center position after data update
+				setTimeout(() => {
+					flatListRef.current?.scrollToIndex({
+						index: CURRENT_INDEX,
+						animated: false,
+					});
+					setIsNavigating(false);
+				}, 50);
+			}
+		},
+		[centerDate, isNavigating]
+	);
 
 	// Get formatted month and year for header
 	const formattedDate = getFormattedMonthYear(centerDate);
 	const [monthName, year] = formattedDate.split(" ");
 
-	// Animate to next 3 days (left arrow)
-	const handleNextWeek = useCallback(() => {
-		if (isNavigating) return;
-		setIsNavigating(true);
+	// Render each span
+	const renderSpan = useCallback(
+		({ item }: { item: SpanData }) => (
+			<View className="flex-row py-2" style={{ width: CARD_CONTAINER_WIDTH }}>
+				{item.days.map((day, index) => (
+					<DayCard
+						key={day.date.toISOString()}
+						day={day}
+						onPress={handleDateSelect}
+						isMiddleCard={index === 1}
+					/>
+				))}
+			</View>
+		),
+		[handleDateSelect]
+	);
 
-		// Pre-calculate new center timestamp on JS thread
-		const newCenterTs = centerDate.getTime() + 3 * DAY_MS;
-
-		translateX.value = withTiming(
-			-CARD_CONTAINER_WIDTH,
-			{ duration: CALENDAR_ANIMATION_CONFIG.duration },
-			(finished) => {
-				if (finished) {
-					runOnJS(handleNavigationComplete)(newCenterTs);
-				}
-			}
-		);
-	}, [isNavigating, centerDate, translateX, handleNavigationComplete]);
-
-	// Animate to previous 3 days (right arrow)
-	const handlePreviousWeek = useCallback(() => {
-		if (isNavigating) return;
-		setIsNavigating(true);
-
-		const newCenterTs = centerDate.getTime() - 3 * DAY_MS;
-
-		translateX.value = withTiming(
-			CARD_CONTAINER_WIDTH,
-			{ duration: CALENDAR_ANIMATION_CONFIG.duration },
-			(finished) => {
-				if (finished) {
-					runOnJS(handleNavigationComplete)(newCenterTs);
-				}
-			}
-		);
-	}, [isNavigating, centerDate, translateX, handleNavigationComplete]);
-
-	// Gesture handlers for swipe navigation
-	const handleSwipeLeft = useCallback(() => {
-		handleNextWeek();
-	}, [handleNextWeek]);
-
-	const handleSwipeRight = useCallback(() => {
-		handlePreviousWeek();
-	}, [handlePreviousWeek]);
-
-	// Animated styles for the day spans
-	const currentSpanStyle = useAnimatedStyle(() => ({
-		transform: [{ translateX: translateX.value }],
-	}));
-
-	const nextSpanStyle = useAnimatedStyle(() => ({
-		transform: [{ translateX: translateX.value + CARD_CONTAINER_WIDTH }],
-	}));
-
-	const prevSpanStyle = useAnimatedStyle(() => ({
-		transform: [{ translateX: translateX.value - CARD_CONTAINER_WIDTH }],
-	}));
-
-	// Render a day span
-	const renderDaySpan = (days: any[], style: any, key: string) => (
-		<Animated.View
-			key={key}
-			className="flex-row py-4 absolute w-full"
-			style={style}
-		>
-			{days.map((day, index) => (
-				<OptimizedDayCard
-					key={day.date.toISOString()}
-					day={day}
-					onPress={handleDateSelect}
-					isMiddleCard={index === 1}
-				/>
-			))}
-		</Animated.View>
+	const getItemLayout = useCallback(
+		(_: any, index: number) => ({
+			length: CARD_CONTAINER_WIDTH,
+			offset: CARD_CONTAINER_WIDTH * index,
+			index,
+		}),
+		[]
 	);
 
 	return (
@@ -183,19 +182,29 @@ export default function Calendar({
 				onNextWeek={handleNextWeek}
 			/>
 
-			{/* Three Day Cards Container with Gesture Support */}
+			{/* Calendar FlatList */}
 			<View className="mb-8">
-				<CalendarGestureHandler
-					onSwipeLeft={handleSwipeLeft}
-					onSwipeRight={handleSwipeRight}
-					disabled={isNavigating}
-				>
-					<View className="overflow-hidden mx-4" style={{ height: 160 }}>
-						{renderDaySpan(prevSpan, prevSpanStyle, "prev")}
-						{renderDaySpan(currentSpan, currentSpanStyle, "current")}
-						{renderDaySpan(nextSpan, nextSpanStyle, "next")}
-					</View>
-				</CalendarGestureHandler>
+				<View className="mx-4" style={{ height: 180, paddingVertical: 8 }}>
+					<Animated.FlatList
+						ref={flatListRef}
+						data={spans}
+						renderItem={renderSpan}
+						keyExtractor={(item) => item.id}
+						horizontal
+						pagingEnabled
+						showsHorizontalScrollIndicator={false}
+						initialScrollIndex={CURRENT_INDEX}
+						getItemLayout={getItemLayout}
+						onMomentumScrollEnd={handleMomentumScrollEnd}
+						scrollEnabled={!isNavigating}
+						decelerationRate="fast"
+						snapToInterval={CARD_CONTAINER_WIDTH}
+						snapToAlignment="start"
+						contentContainerStyle={{
+							paddingHorizontal: 0,
+						}}
+					/>
+				</View>
 			</View>
 
 			{/* Exercise List for Selected Day */}

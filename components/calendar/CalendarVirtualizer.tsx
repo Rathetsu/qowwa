@@ -3,8 +3,7 @@ import { View } from "react-native";
 
 import { CalendarDay, WorkoutDay } from "@/types/calendar";
 import { formatDateKey, getThreeDaySpan } from "@/utils/dateUtils";
-
-import OptimizedDayCard from "./OptimizedDayCard";
+import DayCard from "./DayCard";
 
 interface CalendarVirtualizerProps {
 	centerDate: Date;
@@ -39,7 +38,7 @@ export default function CalendarVirtualizer({
 	const renderDaySpan = (span: DaySpanData) => (
 		<View key={span.key} className="flex-row py-4">
 			{span.days.map((day, index) => (
-				<OptimizedDayCard
+				<DayCard
 					key={day.date.toISOString()}
 					day={day}
 					onPress={onDateSelect}

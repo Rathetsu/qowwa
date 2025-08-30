@@ -1,5 +1,6 @@
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
+import { Colors } from "@/constants/Colors";
 import { loginStart, loginSuccess } from "@/store/userSlice";
 import { LoginCredentials } from "@/types/type";
 import { LinearGradient } from "expo-linear-gradient";
@@ -62,7 +63,7 @@ export default function LoginScreen() {
 	return (
 		<View className="flex-1">
 			<LinearGradient
-				colors={["#0f172a", "#1e293b", "#000000"]}
+				colors={Colors.theme.gradientDarkPrimary}
 				start={{ x: 0, y: 0 }}
 				end={{ x: 1, y: 1 }}
 				style={{
@@ -71,12 +72,12 @@ export default function LoginScreen() {
 					paddingBottom: insets.bottom,
 				}}
 			>
-				{/* Animated background elements */}
+				{/* Enhanced animated background elements with gold theme */}
 				<View className="absolute inset-0">
-					<View className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-xl animate-float" />
-					<View className="absolute top-40 right-16 w-24 h-24 bg-purple-500/10 rounded-full blur-xl animate-pulse" />
+					<View className="absolute top-20 left-10 w-32 h-32 bg-gold-500/8 rounded-full blur-xl animate-float" />
+					<View className="absolute top-40 right-16 w-24 h-24 bg-gold-400/6 rounded-full blur-xl animate-pulse" />
 					<View
-						className="absolute bottom-32 left-20 w-40 h-40 bg-blue-500/10 rounded-full blur-xl animate-float"
+						className="absolute bottom-32 left-20 w-40 h-40 bg-gold-300/4 rounded-full blur-xl animate-float"
 						style={{ animationDelay: "2s" }}
 					/>
 				</View>
@@ -88,29 +89,37 @@ export default function LoginScreen() {
 					{/* Premium Brand Section */}
 					<View className="mb-16 transition-all duration-300">
 						<View className="items-center">
-							{/* Logo container with premium styling */}
+							{/* Logo container with stunning gold styling */}
 							<View className="relative mb-8">
-								<View className="absolute -inset-4 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 rounded-full blur-lg" />
-								<View className="relative bg-black/20 border border-white/10 rounded-full p-6">
+								<View className="absolute -inset-4 bg-gold-500/20 rounded-full blur-lg" />
+								<View className="relative bg-black/30 border border-gold-500/30 rounded-full p-6">
 									<Text className="text-6xl text-center animate-bounce">
 										💪
 									</Text>
 								</View>
 							</View>
 
-							{/* App Title with gradient text */}
-							<Text className="text-cyan-400 text-5xl font-black text-center mb-3 tracking-wider">
+							{/* App Title with stunning gold theme */}
+							<Text className="text-gold-400 text-5xl font-black text-center mb-3 tracking-wider">
 								Sphinx Strength
 							</Text>
-							<Text className="text-white/90 text-xl text-center mb-6 font-light tracking-wide">
-								Fitness Evolution
+							<Text className="text-grey-200 text-xl text-center mb-6 font-light tracking-wide">
+								Fitness <Text className="text-gold-300">Evolution</Text>
 							</Text>
 
-							{/* Premium accent line */}
-							<View className="relative mx-auto mb-8">
-								<View className="h-1 w-32 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full" />
-								<View className="absolute inset-0 h-1 w-32 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full animate-pulse-glow" />
-							</View>
+							{/* Premium gold accent line */}
+							<LinearGradient
+								colors={["transparent", Colors.theme.primary, "transparent"]}
+								start={{ x: 0, y: 0 }}
+								end={{ x: 1, y: 0 }}
+								style={{
+									height: 2,
+									width: 128,
+									alignSelf: "center",
+									marginBottom: 32,
+									borderRadius: 4,
+								}}
+							/>
 						</View>
 					</View>
 
@@ -120,14 +129,20 @@ export default function LoginScreen() {
 						style={{ animationDelay: "0.2s" }}
 					>
 						<LinearGradient
-							colors={[
-								"rgba(17, 24, 39, 0.8)",
-								"rgba(31, 41, 55, 0.6)",
-								"rgba(0, 0, 0, 0.8)",
-							]}
+							colors={Colors.theme.gradientDarkSecondary}
 							start={{ x: 0, y: 0 }}
 							end={{ x: 1, y: 1 }}
-							className="rounded-3xl p-8 shadow-2xl border border-cyan-500/20"
+							style={{
+								borderRadius: 24,
+								padding: 32,
+								borderWidth: 1,
+								borderColor: Colors.theme.borderAccent + "30",
+								shadowColor: Colors.theme.shadowGold,
+								shadowOffset: { width: 0, height: 8 },
+								shadowOpacity: 0.3,
+								shadowRadius: 16,
+								elevation: 12,
+							}}
 						>
 							<CustomInput
 								label="Username"
@@ -139,7 +154,7 @@ export default function LoginScreen() {
 								error={errors.username}
 								variant="premium"
 								autoCapitalize="none"
-								leftIcon={<Text className="text-cyan-400 text-lg">👤</Text>}
+								leftIcon={<Text className="text-gold-400 text-lg">👤</Text>}
 							/>
 
 							<CustomInput
@@ -152,7 +167,7 @@ export default function LoginScreen() {
 								error={errors.password}
 								variant="premium"
 								secureTextEntry
-								leftIcon={<Text className="text-cyan-400 text-lg">🔐</Text>}
+								leftIcon={<Text className="text-gold-400 text-lg">🔐</Text>}
 							/>
 
 							<View className="mt-8">
@@ -160,7 +175,6 @@ export default function LoginScreen() {
 									title="SIGN IN"
 									onPress={handleLogin}
 									variant="premium"
-									gradientColors={["#06b6d4", "#3b82f6"]}
 									textClassName="text-white font-black text-lg tracking-widest"
 									size="large"
 									glowing
@@ -171,7 +185,7 @@ export default function LoginScreen() {
 							{/* Additional options */}
 							<View className="mt-6 pt-6 border-t border-white/10">
 								<TouchableOpacity className="py-2">
-									<Text className="text-cyan-300 text-center text-sm font-semibold">
+									<Text className="text-gold-300 text-center text-sm font-semibold">
 										Forgot Password?
 									</Text>
 								</TouchableOpacity>

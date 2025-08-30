@@ -2,6 +2,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 
+import { Colors } from "@/constants/Colors";
 import { ExerciseListProps } from "@/types/calendar";
 
 export default function ExerciseList({
@@ -16,21 +17,31 @@ export default function ExerciseList({
 		return (
 			<View className="mx-4 mt-6">
 				<LinearGradient
-					colors={["rgba(107, 114, 128, 0.2)", "rgba(107, 114, 128, 0.1)"]}
+					colors={Colors.theme.gradientDarkSecondary}
 					start={{ x: 0, y: 0 }}
 					end={{ x: 1, y: 1 }}
-					className="rounded-2xl p-6"
-					style={{ borderRadius: 16 }}
+					style={{
+						borderRadius: 20,
+						padding: 24,
+						borderWidth: 1,
+						borderColor: Colors.theme.borderAccent + "30",
+					}}
 				>
 					<View className="items-center">
 						<Text className="text-white text-xl font-bold mb-2">
 							Optional Rest Day
 						</Text>
-						<Text className="text-gray-300 text-center text-base">
+						<Text className="text-grey-300 text-center text-base">
 							Take time to recover and prepare for tomorrow's workout
 						</Text>
-						<View className="mt-4 bg-white/10 rounded-xl px-4 py-2">
-							<Text className="text-gray-300 text-sm font-medium">
+						<View
+							className="mt-4 rounded-xl px-4 py-2 border"
+							style={{
+								backgroundColor: Colors.theme.overlayGold,
+								borderColor: Colors.theme.borderAccent + "40",
+							}}
+						>
+							<Text className="text-gold-300 text-sm font-medium">
 								💪 Active recovery recommended
 							</Text>
 						</View>
@@ -42,37 +53,51 @@ export default function ExerciseList({
 
 	return (
 		<View className="mx-6 mt-8">
-			{/* Workout Header */}
+			{/* Enhanced Workout Header with gold theme */}
 			<LinearGradient
-				colors={[workout.color, `${workout.color}DD`]}
+				colors={Colors.theme.gradientGoldPrimary}
 				start={{ x: 0, y: 0 }}
 				end={{ x: 1, y: 1 }}
-				className="rounded-3xl p-6 mb-6"
 				style={{
 					borderRadius: 24,
-					shadowColor: workout.color,
-					shadowOffset: { width: 0, height: 8 },
-					shadowOpacity: 0.3,
-					shadowRadius: 12,
+					padding: 24,
+					marginBottom: 24,
+					shadowColor: Colors.theme.shadowGold,
+					shadowOffset: { width: 0, height: 12 },
+					shadowOpacity: 0.5,
+					shadowRadius: 16,
 				}}
 			>
-				<Text className="text-white text-2xl font-black mb-2">
+				<Text className="text-black text-2xl font-black mb-2">
 					{workout.name}
 				</Text>
-				<Text className="text-white/95 text-base font-medium">
+				<Text className="text-black/80 text-base font-medium">
 					{workout.exercises.length} exercises planned
 				</Text>
 			</LinearGradient>
 
-			{/* Exercise List Header */}
+			{/* Enhanced Exercise List Header */}
 			<View className="mb-6">
 				<Text className="text-white text-xl font-black mb-3">
-					Today's Exercises
+					Today's <Text className="text-gold-400">Exercises</Text>
 				</Text>
-				<View className="w-24 h-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
+				<LinearGradient
+					colors={Colors.theme.gradientGoldPrimary}
+					start={{ x: 0, y: 0 }}
+					end={{ x: 1, y: 0 }}
+					style={{
+						height: 3,
+						width: 96,
+						borderRadius: 6,
+						shadowColor: Colors.theme.primary,
+						shadowOffset: { width: 0, height: 2 },
+						shadowOpacity: 0.6,
+						shadowRadius: 8,
+					}}
+				/>
 			</View>
 
-			{/* Exercise Cards */}
+			{/* Enhanced Exercise Cards with gold theme */}
 			<ScrollView showsVerticalScrollIndicator={false} className="max-h-96">
 				{workout.exercises.map((exercise, index) => (
 					<TouchableOpacity
@@ -80,28 +105,42 @@ export default function ExerciseList({
 						activeOpacity={0.8}
 						className="mb-4"
 						style={{
-							shadowColor: "#000000",
-							shadowOffset: { width: 0, height: 4 },
-							shadowOpacity: 0.15,
-							shadowRadius: 8,
+							shadowColor: Colors.theme.shadowDark,
+							shadowOffset: { width: 0, height: 6 },
+							shadowOpacity: 0.3,
+							shadowRadius: 12,
 						}}
 					>
-						<View className="bg-white/10 border border-white/15 rounded-2xl p-5 backdrop-blur-sm">
+						<LinearGradient
+							colors={Colors.theme.gradientDarkSecondary}
+							start={{ x: 0, y: 0 }}
+							end={{ x: 1, y: 1 }}
+							style={{
+								borderRadius: 20,
+								padding: 20,
+								borderWidth: 1,
+								borderColor: Colors.theme.borderAccent + "20",
+							}}
+						>
 							<View className="flex-row items-center justify-between">
-								{/* Exercise Number and Name */}
+								{/* Enhanced Exercise Number and Name */}
 								<View className="flex-row items-center flex-1">
 									<LinearGradient
-										colors={["#22d3ee", "#0891b2"]}
-										className="w-10 h-10 rounded-full items-center justify-center mr-4"
+										colors={Colors.theme.gradientGoldPrimary}
 										style={{
+											width: 40,
+											height: 40,
 											borderRadius: 20,
-											shadowColor: "#22d3ee",
+											alignItems: "center",
+											justifyContent: "center",
+											marginRight: 16,
+											shadowColor: Colors.theme.shadowGold,
 											shadowOffset: { width: 0, height: 4 },
-											shadowOpacity: 0.3,
-											shadowRadius: 6,
+											shadowOpacity: 0.5,
+											shadowRadius: 8,
 										}}
 									>
-										<Text className="text-white text-base font-black">
+										<Text className="text-black text-base font-black">
 											{index + 1}
 										</Text>
 									</LinearGradient>
@@ -110,42 +149,78 @@ export default function ExerciseList({
 											{exercise.name}
 										</Text>
 										{exercise.targetMuscle && (
-											<Text className="text-gray-300 text-sm font-medium">
+											<Text className="text-grey-300 text-sm font-medium">
 												{exercise.targetMuscle}
 											</Text>
 										)}
 									</View>
 								</View>
 
-								{/* Sets and Reps */}
-								<View className="bg-black/30 border border-white/10 rounded-xl px-4 py-3">
-									<Text className="text-cyan-300 text-base font-bold">
+								{/* Enhanced Sets and Reps */}
+								<View
+									className="rounded-xl px-4 py-3 border"
+									style={{
+										backgroundColor: Colors.theme.surfaceElevated + "60",
+										borderColor: Colors.theme.borderAccent + "40",
+									}}
+								>
+									<Text className="text-gold-400 text-base font-bold">
 										{exercise.sets}
 									</Text>
 								</View>
 							</View>
 
-							{/* Completion Status */}
+							{/* Enhanced Completion Status */}
 							{exercise.isCompleted && (
-								<View className="mt-4 pt-4 border-t border-white/15">
+								<View
+									className="mt-4 pt-4 border-t"
+									style={{ borderTopColor: Colors.theme.borderAccent + "20" }}
+								>
 									<View className="flex-row items-center">
-										<View className="w-3 h-3 bg-green-500 rounded-full mr-3 shadow-lg" />
-										<Text className="text-green-400 text-base font-bold">
+										<View
+											className="w-3 h-3 rounded-full mr-3 shadow-lg"
+											style={{
+												backgroundColor: Colors.theme.success,
+												shadowColor: Colors.theme.success,
+												shadowOffset: { width: 0, height: 2 },
+												shadowOpacity: 0.6,
+												shadowRadius: 4,
+											}}
+										/>
+										<Text
+											className="text-base font-bold"
+											style={{ color: Colors.theme.success }}
+										>
 											Completed
 										</Text>
 									</View>
 								</View>
 							)}
-						</View>
+						</LinearGradient>
 					</TouchableOpacity>
 				))}
 			</ScrollView>
 
-			{/* Workout Summary Footer */}
-			<View className="mt-6 bg-white/10 border border-white/15 rounded-2xl p-6 backdrop-blur-sm">
+			{/* Enhanced Workout Summary Footer with gold theme */}
+			<LinearGradient
+				colors={Colors.theme.gradientDarkElevated}
+				start={{ x: 0, y: 0 }}
+				end={{ x: 1, y: 1 }}
+				style={{
+					marginTop: 24,
+					borderRadius: 20,
+					padding: 24,
+					borderWidth: 1,
+					borderColor: Colors.theme.borderAccent + "30",
+					shadowColor: Colors.theme.shadowGold,
+					shadowOffset: { width: 0, height: 8 },
+					shadowOpacity: 0.3,
+					shadowRadius: 16,
+				}}
+			>
 				<View className="flex-row justify-between items-center">
 					<View className="items-center">
-						<Text className="text-gray-300 text-sm font-medium mb-1">
+						<Text className="text-grey-400 text-sm font-medium mb-1">
 							Total Exercises
 						</Text>
 						<Text className="text-white text-2xl font-black">
@@ -153,18 +228,18 @@ export default function ExerciseList({
 						</Text>
 					</View>
 					<View className="items-center">
-						<Text className="text-gray-300 text-sm font-medium mb-1">
+						<Text className="text-grey-400 text-sm font-medium mb-1">
 							Completed
 						</Text>
-						<Text className="text-cyan-400 text-2xl font-black">
+						<Text className="text-gold-400 text-2xl font-black">
 							{workout.exercises.filter((ex) => ex.isCompleted).length}
 						</Text>
 					</View>
 					<View className="items-center">
-						<Text className="text-gray-300 text-sm font-medium mb-1">
+						<Text className="text-grey-400 text-sm font-medium mb-1">
 							Progress
 						</Text>
-						<Text className="text-purple-400 text-2xl font-black">
+						<Text className="text-gold-300 text-2xl font-black">
 							{Math.round(
 								(workout.exercises.filter((ex) => ex.isCompleted).length /
 									workout.exercises.length) *
@@ -174,7 +249,30 @@ export default function ExerciseList({
 						</Text>
 					</View>
 				</View>
-			</View>
+
+				{/* Progress bar */}
+				<View className="mt-4">
+					<View
+						className="h-2 rounded-full overflow-hidden"
+						style={{ backgroundColor: Colors.theme.surfacePrimary + "80" }}
+					>
+						<LinearGradient
+							colors={Colors.theme.gradientGoldPrimary}
+							start={{ x: 0, y: 0 }}
+							end={{ x: 1, y: 0 }}
+							style={{
+								height: "100%",
+								width: `${Math.round(
+									(workout.exercises.filter((ex) => ex.isCompleted).length /
+										workout.exercises.length) *
+										100
+								)}%`,
+								borderRadius: 4,
+							}}
+						/>
+					</View>
+				</View>
+			</LinearGradient>
 		</View>
 	);
 }

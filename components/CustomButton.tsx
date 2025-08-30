@@ -7,6 +7,8 @@ import {
 	View,
 } from "react-native";
 
+import { Colors } from "@/constants/Colors";
+
 interface CustomButtonProps extends TouchableOpacityProps {
 	title: string;
 	variant?:
@@ -15,7 +17,9 @@ interface CustomButtonProps extends TouchableOpacityProps {
 		| "outline"
 		| "gradient"
 		| "glass"
-		| "premium";
+		| "premium"
+		| "gold"
+		| "dark";
 	size?: "small" | "medium" | "large";
 	textClassName?: string;
 	gradientColors?: string[];
@@ -25,13 +29,15 @@ interface CustomButtonProps extends TouchableOpacityProps {
 }
 
 const variantStyles = {
-	primary: "bg-blue-600 border-blue-500 shadow-lg",
-	secondary: "bg-gray-600 border-gray-500 shadow-lg",
-	outline: "bg-transparent border-2 border-cyan-500 shadow-lg",
-	gradient: "border-transparent shadow-2xl",
-	glass: "bg-black/20 border border-white/20 shadow-2xl",
-	premium:
-		"bg-gradient-to-r from-cyan-500 to-blue-600 border-transparent shadow-2xl",
+	primary: "bg-gold-500 border-gold-600 shadow-2xl shadow-gold-500/30",
+	secondary: "bg-grey-800 border-grey-700 shadow-lg shadow-black/50",
+	outline:
+		"bg-transparent border-2 border-gold-500 shadow-lg shadow-gold-500/20",
+	gradient: "border-transparent shadow-2xl shadow-gold-500/40",
+	glass: "bg-black/30 border border-white/20 shadow-2xl shadow-black/50",
+	premium: "border-transparent shadow-2xl shadow-gold-500/50",
+	gold: "bg-gold-500 border-gold-600 shadow-2xl shadow-gold-500/40",
+	dark: "bg-grey-900 border-grey-800 shadow-xl shadow-black/60",
 };
 
 const sizeStyles = {
@@ -41,12 +47,14 @@ const sizeStyles = {
 };
 
 const textVariantStyles = {
-	primary: "text-white font-bold",
+	primary: "text-black font-bold",
 	secondary: "text-white font-bold",
-	outline: "text-cyan-400 font-bold",
+	outline: "text-gold-400 font-bold",
 	gradient: "text-white font-bold",
 	glass: "text-white font-bold",
 	premium: "text-white font-bold",
+	gold: "text-black font-bold",
+	dark: "text-white font-bold",
 };
 
 const textSizeStyles = {
@@ -61,35 +69,39 @@ export default function CustomButton({
 	size = "medium",
 	className,
 	textClassName,
-	gradientColors = ["#06b6d4", "#3b82f6"],
+	gradientColors,
 	iconLeft,
 	iconRight,
 	glowing = false,
 	...props
 }: CustomButtonProps) {
-	const getGradientClass = (colors: string[]) => {
-		if (colors[0] === "#06b6d4" && colors[1] === "#3b82f6") {
-			return "bg-gradient-to-r from-cyan-500 to-blue-600";
+	const getGradientColors = (colors?: string[]) => {
+		if (colors && colors.length >= 2) {
+			return colors;
 		}
-		if (colors[0] === "#8b5cf6" && colors[1] === "#ec4899") {
-			return "bg-gradient-to-r from-purple-500 to-pink-500";
+
+		// Default gradients based on variant
+		switch (variant) {
+			case "gold":
+			case "primary":
+				return Colors.theme.gradientGoldPrimary;
+			case "premium":
+				return Colors.theme.gradientGoldSecondary;
+			case "dark":
+			case "secondary":
+				return Colors.theme.gradientDarkElevated;
+			default:
+				return Colors.theme.gradientGoldPrimary;
 		}
-		if (colors[0] === "#10b981" && colors[1] === "#059669") {
-			return "bg-gradient-to-r from-emerald-500 to-green-600";
-		}
-		if (colors[0] === "#dc2626" && colors[1] === "#ea580c") {
-			return "bg-gradient-to-r from-red-600 to-orange-600";
-		}
-		return "bg-gradient-to-r from-cyan-500 to-blue-600";
 	};
 
 	const buttonClasses = [
 		"items-center justify-center flex-row transition-all duration-200",
-		variant === "gradient"
-			? getGradientClass(gradientColors)
+		variant === "gradient" || variant === "premium" || variant === "gold"
+			? ""
 			: variantStyles[variant],
 		sizeStyles[size],
-		glowing && variant !== "outline" ? "animate-pulse" : "",
+		glowing ? "animate-pulse" : "",
 		className,
 	]
 		.filter(Boolean)
@@ -106,11 +118,9 @@ export default function CustomButton({
 
 	const contentClasses = "flex-row items-center justify-center space-x-2";
 
-	if (variant === "gradient" || variant === "premium") {
-		const gradientColorsArray =
-			variant === "premium"
-				? ["#06b6d4", "#0891b2", "#0e7490"]
-				: [gradientColors[0] || "#06b6d4", gradientColors[1] || "#3b82f6"];
+	// Enhanced gradient variants
+	if (variant === "gradient" || variant === "premium" || variant === "gold") {
+		const gradientColorsArray = getGradientColors(gradientColors);
 
 		return (
 			<TouchableOpacity {...props} activeOpacity={0.8}>
@@ -118,26 +128,53 @@ export default function CustomButton({
 					colors={gradientColorsArray}
 					start={{ x: 0, y: 0 }}
 					end={{ x: 1, y: 1 }}
-					className={sizeStyles[size]}
-					style={{ borderRadius: size === "small" ? 12 : 16 }}
+					style={{
+						borderRadius: size === "small" ? 12 : 16,
+						paddingHorizontal:
+							size === "small" ? 16 : size === "medium" ? 24 : 32,
+						paddingVertical:
+							size === "small" ? 10 : size === "medium" ? 14 : 16,
+					}}
 				>
 					<View className={contentClasses}>
 						{iconLeft && <View className="mr-2">{iconLeft}</View>}
 						<Text className={textClasses}>{title}</Text>
 						{iconRight && <View className="ml-2">{iconRight}</View>}
 					</View>
-					{/* Subtle glow overlay for premium buttons */}
-					{variant === "premium" && glowing && (
+
+					{/* Enhanced glow overlay */}
+					{glowing && (
 						<LinearGradient
 							colors={[
-								"rgba(255,255,255,0.1)",
+								"rgba(255,255,255,0.2)",
 								"transparent",
-								"rgba(255,255,255,0.1)",
+								"rgba(255,255,255,0.2)",
 							]}
 							start={{ x: 0, y: 0 }}
 							end={{ x: 1, y: 1 }}
-							className="absolute inset-0"
-							style={{ borderRadius: size === "small" ? 12 : 16 }}
+							style={{
+								position: "absolute",
+								top: 0,
+								left: 0,
+								right: 0,
+								bottom: 0,
+								borderRadius: size === "small" ? 12 : 16,
+							}}
+						/>
+					)}
+
+					{/* Subtle inner glow for premium effect */}
+					{variant === "premium" && (
+						<View
+							style={{
+								position: "absolute",
+								top: 1,
+								left: 1,
+								right: 1,
+								bottom: 1,
+								borderRadius: size === "small" ? 11 : 15,
+								backgroundColor: "rgba(255,255,255,0.1)",
+							}}
 						/>
 					)}
 				</LinearGradient>
@@ -152,6 +189,11 @@ export default function CustomButton({
 				<Text className={textClasses}>{title}</Text>
 				{iconRight && <View className="ml-2">{iconRight}</View>}
 			</View>
+
+			{/* Enhanced border glow effect for outline variant */}
+			{variant === "outline" && glowing && (
+				<View className="absolute inset-0 border-2 border-gold-400/60 rounded-2xl animate-pulse" />
+			)}
 		</TouchableOpacity>
 	);
 }

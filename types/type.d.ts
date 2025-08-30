@@ -25,7 +25,7 @@ export interface DashboardCardProps {
 	icon: string;
 	onPress: () => void;
 	gradient?: readonly [string, string, ...string[]];
-	variant?: "default" | "glass" | "premium";
+	variant?: "default" | "glass" | "premium" | "gold" | "dark";
 }
 
 export interface LoginCredentials {
