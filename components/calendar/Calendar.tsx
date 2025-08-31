@@ -183,8 +183,8 @@ export default function Calendar({
 			/>
 
 			{/* Calendar FlatList */}
-			<View className="mb-8">
-				<View className="mx-4" style={{ height: 180, paddingVertical: 8 }}>
+			<View className="mb-[-24px]">
+				<View className="mx-4" style={{ height: 210, paddingVertical: 8 }}>
 					<Animated.FlatList
 						ref={flatListRef}
 						data={spans}

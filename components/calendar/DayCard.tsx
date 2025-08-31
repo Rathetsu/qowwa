@@ -23,7 +23,7 @@ const DayCard = memo(function DayCard({
 		shadowColor: day.isSelected
 			? Colors.theme.shadowGold
 			: Colors.theme.shadowDark,
-		shadowOffset: { width: 0, height: day.isSelected ? 12 : 6 },
+		shadowOffset: { width: 0, height: day.isSelected ? 10 : 6 },
 		shadowOpacity: day.isSelected ? 0.6 : 0.3,
 		shadowRadius: day.isSelected ? 16 : 8,
 		marginHorizontal: 6,

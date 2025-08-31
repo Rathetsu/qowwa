@@ -17,7 +17,13 @@ export default function ExerciseList({
 		return (
 			<View className="mx-4 mt-6">
 				<LinearGradient
-					colors={Colors.theme.gradientDarkSecondary}
+					colors={
+						Colors.theme.gradientDarkSecondary as unknown as readonly [
+							string,
+							string,
+							...string[],
+						]
+					}
 					start={{ x: 0, y: 0 }}
 					end={{ x: 1, y: 1 }}
 					style={{
@@ -32,7 +38,7 @@ export default function ExerciseList({
 							Optional Rest Day
 						</Text>
 						<Text className="text-grey-300 text-center text-base">
-							Take time to recover and prepare for tomorrow's workout
+							Take time to recover and prepare for tomorrow&apos;s workout
 						</Text>
 						<View
 							className="mt-4 rounded-xl px-4 py-2 border"
@@ -55,7 +61,13 @@ export default function ExerciseList({
 		<View className="mx-6 mt-8">
 			{/* Enhanced Workout Header with gold theme */}
 			<LinearGradient
-				colors={Colors.theme.gradientGoldPrimary}
+				colors={
+					Colors.theme.gradientGoldPrimary as unknown as readonly [
+						string,
+						string,
+						...string[],
+					]
+				}
 				start={{ x: 0, y: 0 }}
 				end={{ x: 1, y: 1 }}
 				style={{
@@ -79,10 +91,16 @@ export default function ExerciseList({
 			{/* Enhanced Exercise List Header */}
 			<View className="mb-6">
 				<Text className="text-white text-xl font-black mb-3">
-					Today's <Text className="text-gold-400">Exercises</Text>
+					Today&apos;s <Text className="text-gold-400">Exercises</Text>
 				</Text>
 				<LinearGradient
-					colors={Colors.theme.gradientGoldPrimary}
+					colors={
+						Colors.theme.gradientGoldPrimary as unknown as readonly [
+							string,
+							string,
+							...string[],
+						]
+					}
 					start={{ x: 0, y: 0 }}
 					end={{ x: 1, y: 0 }}
 					style={{
@@ -112,7 +130,13 @@ export default function ExerciseList({
 						}}
 					>
 						<LinearGradient
-							colors={Colors.theme.gradientDarkSecondary}
+							colors={
+								Colors.theme.gradientDarkSecondary as unknown as readonly [
+									string,
+									string,
+									...string[],
+								]
+							}
 							start={{ x: 0, y: 0 }}
 							end={{ x: 1, y: 1 }}
 							style={{
@@ -126,7 +150,13 @@ export default function ExerciseList({
 								{/* Enhanced Exercise Number and Name */}
 								<View className="flex-row items-center flex-1">
 									<LinearGradient
-										colors={Colors.theme.gradientGoldPrimary}
+										colors={
+											Colors.theme.gradientGoldPrimary as unknown as readonly [
+												string,
+												string,
+												...string[],
+											]
+										}
 										style={{
 											width: 40,
 											height: 40,
@@ -203,7 +233,13 @@ export default function ExerciseList({
 
 			{/* Enhanced Workout Summary Footer with gold theme */}
 			<LinearGradient
-				colors={Colors.theme.gradientDarkElevated}
+				colors={
+					Colors.theme.gradientDarkElevated as unknown as readonly [
+						string,
+						string,
+						...string[],
+					]
+				}
 				start={{ x: 0, y: 0 }}
 				end={{ x: 1, y: 1 }}
 				style={{
@@ -257,7 +293,13 @@ export default function ExerciseList({
 						style={{ backgroundColor: Colors.theme.surfacePrimary + "80" }}
 					>
 						<LinearGradient
-							colors={Colors.theme.gradientGoldPrimary}
+							colors={
+								Colors.theme.gradientGoldPrimary as unknown as readonly [
+									string,
+									string,
+									...string[],
+								]
+							}
 							start={{ x: 0, y: 0 }}
 							end={{ x: 1, y: 0 }}
 							style={{

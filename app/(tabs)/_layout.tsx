@@ -15,7 +15,7 @@ export default function TabLayout() {
 	const isAuthenticated = useSelector((state: RootState) => {
 		try {
 			return state?.user?.isAuthenticated ?? false;
-		} catch (error) {
+		} catch {
 			console.warn("Redux state not available, defaulting to unauthenticated");
 			return false;
 		}
@@ -43,13 +43,13 @@ export default function TabLayout() {
 				tabBarBackground: TabBarBackground,
 				tabBarStyle: {
 					backgroundColor: "transparent", // Let the gradient background show through
-					borderTopColor: Colors.theme.borderAccent + "60", // Subtle gold border with opacity
-					borderTopWidth: 1.5,
+					borderTopColor: "transparent", // Let TabBarBackground handle borders
+					borderTopWidth: 0,
 					elevation: 0, // Remove shadow on Android
 					shadowOpacity: 0, // Remove shadow on iOS
-					height: 90, // Slightly increased height for better proportions
-					paddingTop: 10,
-					paddingBottom: Platform.OS === "ios" ? 20 : 15,
+					height: 95, // Optimized height for better proportions
+					paddingTop: 12,
+					paddingBottom: Platform.OS === "ios" ? 25 : 18,
 					...Platform.select({
 						ios: {
 							position: "absolute",
@@ -67,9 +67,10 @@ export default function TabLayout() {
 				tabBarIconStyle: {
 					marginTop: 2,
 					shadowColor: Colors.theme.primary,
-					shadowOffset: { width: 0, height: 0 },
-					shadowOpacity: 0.3,
-					shadowRadius: 4,
+					shadowOffset: { width: 0, height: 2 },
+					shadowOpacity: 0.4,
+					shadowRadius: 6,
+					elevation: 3, // Android shadow
 				},
 				tabBarItemStyle: {
 					paddingVertical: 4,
